@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import config from './config/index.js';
+import router from './routes/index.js';
 
 const app = express();
 const PORT = config.port;
@@ -14,6 +15,9 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Hello, world!');
 });
+
+// Routes
+app.use('/api/tasks', router);
 
 // Database connection
 const connectToDatabase = async () => {
